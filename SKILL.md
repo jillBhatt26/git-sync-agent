@@ -28,7 +28,7 @@ Chain of Thought (always follow this for every invocation):
      1. Verifies the repo exists in the base directory.
      2. Checks `git branch --show-current`. Handle detached HEAD.
      3. Stashes changes if `git status --porcelain` is not empty.
-     4. Determines the target branch: If a specific branch wasn't requested, prioritize "dev". If remote "dev" branch doesn't exist in the git repo, pull remote "staging" branch. NEVER EVER PULL remote "main" BRANCH in any of the git repos EVER. If the target branch is "main", skip the repository.
+     4. Determines the target branch: If a specific branch wasn't requested, prioritize "dev". If remote "dev" branch doesn't exist in the git repo, pull remote "staging" branch. By default, NEVER PULL remote "main" BRANCH in any of the git repos. If the target branch is "main", skip the repository UNLESS the user explicitly requested "main" in their prompt.
      5. Executes `git pull origin "$target_branch"`.
      6. Pops stash if it was stashed.
      7. Checks for conflicts.
